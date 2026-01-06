@@ -1,0 +1,33 @@
+# ===== Build artifacts =====
+*.exe
+*.dll
+*.obj
+*.o
+*.a
+*.lib
+
+# ===== Debug / temp =====
+*.pdb
+*.ilk
+*.log
+*.tmp
+
+# ===== Build folders =====
+/build/
+/bin/
+/out/
+/dist/
+
+# ===== Visual Studio =====
+.vs/
+*.vcxproj.user
+
+# ===== CMake =====
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# ===== OS =====
+Thumbs.db
+.DS_Store
