@@ -1,3 +1,4 @@
+# Setup
 truoc khi chay duoc thi phai sua ip ket noi
 
 tim doan code trong int main() cua client.cpp
