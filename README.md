@@ -3,9 +3,13 @@
 ## Môn học: **INT3304 – Lập trình mạng**
 # Nhóm thực hiện 
 Nguyễn Đức Hoan 23020607
+
 Ngô Đức Huy 23020610
+
 Võ Hồng Thái 23020644
 
+# Tài liệu
+https://www.overleaf.com/read/zjxnddrtvjnv#6d8b76
 ## 1. Giới thiệu
 
 Đây là đồ án **Bài Tập Lớn môn Lập trình mạng (INT3304)**, xây dựng hệ thống **chat theo mô hình Publish/Subscribe**.
