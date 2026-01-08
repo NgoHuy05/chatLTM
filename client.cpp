@@ -122,7 +122,7 @@ struct IncomingFile {
 std::unordered_map<uint32_t, IncomingFile> open_files;
 
 void recv_loop() {
-    std::filesystem::create_directory("upload");
+std::filesystem::create_directory("client_upload");
 
     while(running) {
         PacketHeader h{};
@@ -175,7 +175,7 @@ void recv_loop() {
 
             case MSG_PUBLISH_FILE: {
                 std::string fname((char*)payload.data(), payload.size());
-                IncomingFile f; f.filename="upload/"+fname; f.ofs.open(f.filename,std::ios::binary); f.opened=true;
+                IncomingFile f; f.filename="client_upload/"+fname; f.ofs.open(f.filename,std::ios::binary); f.opened=true;
                 open_files[h.messageId]=std::move(f);
                 std::cout << "\n[RECEIVING FILE] " << fname << "\n";
                 break;
@@ -236,7 +236,7 @@ void send_file(const std::string &user, const std::string &target, bool priv) {
     send_packet(MSG_FILE_DATA, user, target, (priv ? FLAG_PRIVATE : FLAG_GROUP) | FLAG_LAST, {}, msgId);
 
     // 4. Gửi thông báo tới người nhận
-    std::string notifyMsg = "[FILE SENT] " + filename;
+    std::string notifyMsg = "[FILE SENT] " + filename + "\n";
     send_packet(MSG_PUBLISH_TEXT, user, target, priv ? FLAG_PRIVATE : FLAG_GROUP,
                 std::vector<uint8_t>(notifyMsg.begin(), notifyMsg.end()));
 
@@ -249,7 +249,7 @@ int main() {
 
     sock=socket(AF_INET,SOCK_STREAM,0);
     sockaddr_in addr{}; addr.sin_family=AF_INET; addr.sin_port=htons(DEFAULT_PORT);
-    inet_pton(AF_INET,"192.168.1.13",&addr.sin_addr);
+    inet_pton(AF_INET,"10.11.192.187",&addr.sin_addr);
 
     if(connect(sock,(sockaddr*)&addr,sizeof(addr))!=0) { std::cout<<"Connect failed\n"; return 1; }
 
