@@ -428,6 +428,14 @@ void handle_packet(mg_connection *c, PacketHeader &h, const uint8_t *payload)
             }
 
             g_files[h.messageId] = std::move(f);
+            // ====== 🔥 THIẾU ĐOẠN NÀY ======
+            if (h.flags & FLAG_PRIVATE)
+                send_private(h.topic, h, payload);
+            else
+                broadcast_topic(h.topic, h, payload, c);
+            // ==============================
+
+            send_ack(c, h.messageId);
             send_ack(c, h.messageId);
         }
         break;
