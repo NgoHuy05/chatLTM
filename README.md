@@ -46,7 +46,6 @@ Chương trình hỗ trợ:
 ├── client.cpp        # Chương trình client
 ├── server.cpp        # Chương trình server (broker)
 ├── protocol.h        # Định nghĩa giao thức
-├── common.cpp        # Hàm dùng chung
 ├── mongoose.c        # WebSocket library
 ├── README.md
 ```
@@ -55,39 +54,8 @@ Chương trình hỗ trợ:
 
 ## 4. Cấu hình trước khi chạy (Setup)
 
-### 4.1. Cấu hình IP kết nối
-
-Trước khi chạy chương trình, **bắt buộc phải chỉnh IP của server trong `client.cpp`**.
-
-Trong hàm `main()` của `client.cpp`, tìm đoạn code:
-
-```cpp
-sockaddr_in addr{};
-addr.sin_family = AF_INET;
-addr.sin_port = htons(DEFAULT_PORT);
-inet_pton(AF_INET, "192.168.1.13", &addr.sin_addr);
-```
-
-Lấy địa chỉ IPv4 của máy chạy server:
-
-1. Mở **Command Prompt (Windows)**
-2. Gõ lệnh:
-
-```cmd
-ipconfig
-```
-
-3. Tìm dòng **IPv4 Address**, ví dụ:
-
-```
-IPv4 Address . . . . . . . . . . : 192.168.1.20
-```
-
-4. Thay IP trong `inet_pton` tương ứng:
-
-```cpp
-inet_pton(AF_INET, "192.168.1.20", &addr.sin_addr);
-```
+Sử dụng Window hoặc Linux
+Có sử dụng VSCode
 
 ---
 
